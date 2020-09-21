@@ -1,0 +1,2 @@
+# Mobile_Atv01-EncontraLetras
+Repositório criado para guardar a atividade elaborada para a matéria de Programação de Aplicativos Móveis. O objetivo era criar um aplicativo que se conectasse a uma API REST, pegasse dados por meio dela e usasse esses dados de alguma forma. Então criei um App que exibe letras de músicas a partir do nome do artista e da música, utilizando a API REST pública intitulada "Lyrics.ovh".
