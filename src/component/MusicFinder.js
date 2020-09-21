@@ -14,9 +14,9 @@ const MusicFinder = (props) => {
                         onPress={ 
                             () => { 
                                 props.goTo('LyricsPg'); // Ativação da função goToPage. A STATE de SearchPage será atualizada com os dados retornados da API REST baseados nos valores passados pelo usuário nos componentes de TextInput.
-                                (console.log(`MusicFinder Artista: ${props.dataState.artist}`));
-                                (console.log(`MusicFinder Musica: ${props.dataState.music}`));
-                                (console.log(`MusicFinder Lyrics: ${props.musicLyrics}`));
+                                //(console.log(`MusicFinder Artista: ${props.dataState.artist}`));
+                                //(console.log(`MusicFinder Musica: ${props.dataState.music}`));
+                                //(console.log(`MusicFinder Lyrics: ${props.musicLyrics}`));
                                 
                             } 
                         } />

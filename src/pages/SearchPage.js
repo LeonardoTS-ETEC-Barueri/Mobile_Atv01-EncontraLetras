@@ -23,7 +23,7 @@ export default class SearchPage extends React.Component{
   // Implementação inicial "componentDidMount()" e coleta de dados com "Axios" usando uma função de coleta de dados personalizada;
   componentDidMount(){
   this.refreshAPIRequisition();
-    console.log('componentDidMount() - Atualizei as paradas :D')
+    console.log('componentDidMount() - Atualizei as coisas.')
   }
 
   // Função assíncrona de requisição de dados.
