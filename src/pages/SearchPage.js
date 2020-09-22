@@ -13,8 +13,8 @@ export default class SearchPage extends React.Component{
 
     this.state = {
       data: {
-        artist: null,
-        music: null
+        artist: "",
+        music: ""
       },
       lyrics: []
     }
@@ -22,7 +22,8 @@ export default class SearchPage extends React.Component{
   }
   // Implementação inicial "componentDidMount()" e coleta de dados com "Axios" usando uma função de coleta de dados personalizada;
   componentDidMount(){
-  this.refreshAPIRequisition();
+    let teste = this.refreshAPIRequisition();
+    console.log(teste);
     console.log('componentDidMount() - Atualizei as coisas.')
   }
 
@@ -39,19 +40,32 @@ export default class SearchPage extends React.Component{
         const {lyrics} = response.data;
         
         console.log(`Response 200: ${artist}, ${music}` );
-    
+
+        if (!lyrics) {
+
+          return(
+            this.changeArtistState("Eita... ¯\_(ツ)_/¯"),
+            this.changeMusicState(""),
+            this.setState({
+              lyrics: 'Não consegui buscar a letra da música, talvez você esteja tentando várias vezes a mesma música, ou os nomes do artista e da música estejam errados.'
+            }),
+            console.log(`API ERROR: Não é permitido buscar a mesma coisa duas vezes seguidas. Talvez a API não esteja respondendo bem...` )
+          )
+
+        }
+        
         return this.setState({
           lyrics: lyrics  // Nosso Lyrics (State) recebe o Lyrics da (API REST).
         })
 
       }).catch(err => {
           this.changeArtistState("( 'ಠ⌣ಠ) Ops...");
-          this.changeMusicState(null);
+          this.changeMusicState("");
           return(
             this.setState({
               lyrics: 'Não foi possível encontrar a letra da musica, verifique se você digitou o nome do artista e da música corretamente.'
             }),
-            console.log(`${err} - Erro 404: ${artist}, ${music}` )
+            console.log(`${err} - Erro 404: Artista: [${artist}], Música: [${music}]` )
           ) 
                 
       })
@@ -66,6 +80,8 @@ export default class SearchPage extends React.Component{
       'artist': newArtist}
     })
 
+    console.log(`changeArtistState() - Novo Artista: [${newArtist}]`);
+
   }
 
   changeMusicState = (newMusic) => {
@@ -74,6 +90,8 @@ export default class SearchPage extends React.Component{
       data: {...this.state.data,
       music: newMusic}
     })
+
+    console.log(`changeMusicState() - Nova Música: [${newMusic}]`);
 
   }
 
